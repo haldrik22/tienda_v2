@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <header th:replace="~{layout/plantilla :: header}"/>
+        <section th:replace="~{producto/fragmentos :: botonesAgregar}"/>
+        <section th:replace="~{producto/fragmentos :: agregarProducto}"/>
+        <section th:replace="~{producto/fragmentos :: listadoProductos}"/>
+       
+
+        <footer th:replace="~{layout/plantilla::footer}"/> 
+    </body>
+</html>
