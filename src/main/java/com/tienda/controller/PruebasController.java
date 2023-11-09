@@ -45,4 +45,5 @@ public class PruebasController {
         model.addAttribute("categorias", categorias);
         return "/pruebas/listado";
     }
+    //que lo que
 }
