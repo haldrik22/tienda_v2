@@ -45,5 +45,23 @@ public class PruebasController {
         model.addAttribute("categorias", categorias);
         return "/pruebas/listado";
     }
-    //que lo que
+
+    @GetMapping("/listado2")
+    public String listado2(Model model) {
+        var productos = productoService.getProductos(false);
+        model.addAttribute("productos", productos);
+
+        return "/pruebas/listado2";
+    }
+
+    @PostMapping("/query1")
+    public String consulta1(@RequestParam(value = "precioInf") double precioInf,
+            @RequestParam(value = "precioSup") double precioSup,
+            Model model) {
+        var productos = productoService.consultaQuery(precioInf, precioSup);
+        model.addAttribute("productos", productos);
+
+        return "/pruebas/listado2";
+    }
+
 }

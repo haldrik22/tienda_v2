@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
@@ -6,23 +7,78 @@
         <title>TechShop</title>
     </head>
     <body>
-        <!-- 1 Sección principal para mostrar la informaccion de las categorias -->       
-        <section th:fragment="categoriasTabs" id="categorias">            
-            <div class="row py-4">                
-                <ul class="nav nav-tabs">                    
-                    <li class="nav-item">                        
-                        <a class="nav-link"                            
-                           aria-current="page"                            
+        <!-- 1 SecciÃ³n principal para mostrar la informaccion de las categorias -->
+        <section th:fragment="categoriasTabs" id="categorias">
+            <div class="row py-4">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link" 
+                           aria-current="page" 
                            href="/pruebas/listado"
-                           >[[#{pruebas.todas}]]</a>           
-                    </li>       
-                    <li th:each="categoria : ${categorias}" class="nav-item">       
-                        <a class="nav-link"     
-                           th:href="@{/pruebas/listado/}+${categoria.idCategoria}"    
-                           >[[${categoria.descripcion}]]</a>      
-                    </li>                            
-                </ul>    
-            </div>   
+                           >[[#{pruebas.todas}]]</a>
+                    </li>
+                    <li th:each="categoria : ${categorias}" class="nav-item">
+                        <a class="nav-link" 
+                           th:href="@{/pruebas/listado/}+${categoria.idCategoria}"
+                           >[[${categoria.descripcion}]]</a>
+                    </li>                    
+                </ul>
+            </div>
+        </section>
+
+        <!-- 2 SecciÃ³n para mostrar la informaccion de los productos seleccionados -->
+        <section th:fragment="listadoProductos">
+            <div class="row row-cols-4">
+                <div class="card p-4" th:each="p : ${productos}">
+                    <figure>
+                        <img th:src="${p.rutaImagen}" 
+                             class="card-img-top" 
+                             height="200"
+                             alt="..."/>
+                        <figcaption>
+                            Â¢[[${p.precio}+' ('+${p.existencias}+')']]
+                        </figcaption>
+                    </figure>
+                    <div class="card-header">
+                        [[${p.descripcion}]]
+                    </div>
+                    <div class="card-body">
+                        <p>[[${p.detalle}]]</p>
+                    </div>
+                </div>                
+            </div>
+        </section>       
+
+        <!-- 3 SecciÃ³n para mostrar los filtros a desarrollar -->
+        <section th:fragment="filtros">
+            <div class="row p-3">
+                <div class='col-md-3'>
+                    <form method="post"
+                          th:action='@{/pruebas/query1}'>
+                        <div class='card'>
+                            <div class='card-header'>
+                                [[#{pruebas.ampliadas}]]
+                            </div>
+                            <div class='card-body'>
+                                <div class="mb-3">
+                                    <label for="precioInf">[[#{pruebas.precio.inferior}]]</label>
+                                    <input type="number" class="form-control" name="precioInf" required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="precioSup">[[#{pruebas.precio.superior}]]</label>
+                                    <input type="number" class="form-control" name="precioSup" required="true"/>
+                                </div>
+                            </div>
+                            <div class='card-footer'>
+                                <button type="submit" class='btn btn-primary'>
+                                    <i class='fas fa-check'></i> [[#{pruebas.ampliadas}]]
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
         </section>
     </body>
 </html>
