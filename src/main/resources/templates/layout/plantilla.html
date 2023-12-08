@@ -63,8 +63,8 @@
                             <li class="nav-item text my-auto">
                                 <form method="post"
                                       th:action='@{/logout}'>
-                                      <button class='btn btn-dark'>
-                                          <i class='fas fa-sign-out-alt'></i>
+                                    <button class='btn btn-dark'>
+                                        <i class='fas fa-sign-out-alt'></i>
                                     </button>
                                 </form>
                             </li>
@@ -82,16 +82,14 @@
                 </div>
             </section>
         </header>
-
-        <footer th:fragment="footer" class="bg-info mt-5 p-2">
+        <footer th:fragment="footer" class="bg-info text-white mt-5 p-2">
             <div class="container">
                 <div class="col">
-
                     <p class="lead text-center">
-                        &copy; [[#{plantilla.derechos}]]
-                    </p>
-
-                    </footer>
-
-                    </body>
-                    </html>
+                        &COPY; [[#{plantilla.derechos}]]
+                    </p>  
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
